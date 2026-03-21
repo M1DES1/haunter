@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.main-container');
+    const wrapper = document.querySelector('.center-wrapper');
     
-    // Ustawiamy startową przezroczystość
-    container.style.opacity = '0';
-    container.style.transition = 'opacity 1s ease-in-out';
+    // Ustawienie początkowe
+    wrapper.style.opacity = '0';
+    wrapper.style.transition = 'opacity 1.2s ease-in-out';
 
-    // Pokazujemy po krótkiej chwili
+    // Start animacji
     setTimeout(() => {
-        container.style.opacity = '1';
+        wrapper.style.opacity = '1';
     }, 100);
 });

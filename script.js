@@ -1,19 +1,22 @@
-// Prosty efekt pojawiania się elementów przy skrolowaniu
-window.addEventListener('scroll', () => {
-    const content = document.querySelector('.grid-container');
-    const contentPosition = content.getBoundingClientRect().top;
-    const screenPosition = window.innerHeight / 1.3;
-
-    if (contentPosition < screenPosition) {
-        content.style.opacity = '1';
-        content.style.transform = 'translateY(0)';
-    }
-});
-
-// Ustawienie początkowe dla animacji JS
 document.addEventListener('DOMContentLoaded', () => {
-    const content = document.querySelector('.grid-container');
-    content.style.opacity = '0';
-    content.style.transform = 'translateY(50px)';
-    content.style.transition = 'all 0.8s ease-out';
+    const mediaRow = document.querySelector('.media-row');
+    
+    // Ustawienia początkowe do animacji
+    mediaRow.style.opacity = '0';
+    mediaRow.style.transform = 'translateY(50px)';
+    mediaRow.style.transition = 'all 1s ease-out';
+
+    const checkVisibility = () => {
+        const triggerBottom = window.innerHeight / 5 * 4;
+        const boxTop = mediaRow.getBoundingClientRect().top;
+
+        if(boxTop < triggerBottom) {
+            mediaRow.style.opacity = '1';
+            mediaRow.style.transform = 'translateY(0)';
+        }
+    };
+
+    // Sprawdź przy ładowaniu i przy skrolowaniu
+    window.addEventListener('scroll', checkVisibility);
+    checkVisibility(); // Wywołaj raz na start
 });

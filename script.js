@@ -1,22 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const mediaRow = document.querySelector('.media-row');
+    const container = document.querySelector('.main-container');
     
-    // Ustawienia początkowe do animacji
-    mediaRow.style.opacity = '0';
-    mediaRow.style.transform = 'translateY(50px)';
-    mediaRow.style.transition = 'all 1s ease-out';
+    // Ustawiamy startową przezroczystość
+    container.style.opacity = '0';
+    container.style.transition = 'opacity 1s ease-in-out';
 
-    const checkVisibility = () => {
-        const triggerBottom = window.innerHeight / 5 * 4;
-        const boxTop = mediaRow.getBoundingClientRect().top;
-
-        if(boxTop < triggerBottom) {
-            mediaRow.style.opacity = '1';
-            mediaRow.style.transform = 'translateY(0)';
-        }
-    };
-
-    // Sprawdź przy ładowaniu i przy skrolowaniu
-    window.addEventListener('scroll', checkVisibility);
-    checkVisibility(); // Wywołaj raz na start
+    // Pokazujemy po krótkiej chwili
+    setTimeout(() => {
+        container.style.opacity = '1';
+    }, 100);
 });
